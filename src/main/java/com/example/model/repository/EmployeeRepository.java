@@ -9,6 +9,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-    @Query("select e from Employee e where e.name = :name")
+    @Query("select e from com.example.model.entity.Employee e where e.name = :name")
     Employee findByName(@Param("name") String name);
 }

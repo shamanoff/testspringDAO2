@@ -21,7 +21,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan("com.example")
 @PropertySource("classpath:app.properties")
-@EnableJpaRepositories("com.example.repository")
+@EnableJpaRepositories("com.example.model.repository")
 public class DataConfig {
 
     private static final String PROP_DATABASE_DRIVER = "db.driver";
@@ -44,7 +44,7 @@ public class DataConfig {
         dataSource.setDriverClassName(env.getRequiredProperty(PROP_DATABASE_DRIVER));
         dataSource.setUrl(env.getRequiredProperty(PROP_DATABASE_URL));
         dataSource.setUsername(env.getRequiredProperty(PROP_DATABASE_USERNAME));
-//        dataSource.setPassword(env.getRequiredProperty(PROP_DATABASE_PASSWORD));
+        dataSource.setPassword(env.getRequiredProperty(PROP_DATABASE_PASSWORD));
 
         return dataSource;
     }
@@ -73,7 +73,6 @@ public class DataConfig {
         Properties properties = new Properties();
         properties.put(PROP_HIBERNATE_DIALECT, env.getRequiredProperty(PROP_HIBERNATE_DIALECT));
         properties.put(PROP_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROP_HIBERNATE_SHOW_SQL));
-//        properties.put(PROP_HIBERNATE_HBM2DDL_AUTO, env.getRequiredProperty(PROP_HIBERNATE_HBM2DDL_AUTO));
 
         return properties;
     }
