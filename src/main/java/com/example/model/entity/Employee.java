@@ -7,11 +7,11 @@ import org.json.JSONObject;
 import javax.persistence.*;
 
 @Entity(name = "Employee")
-@Table(name = "employees")
+@Table(name = "employee")
 //@Scope("prototype")
 public class Employee implements IEmployee {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", length = 6, nullable = false)
     private Integer id;
@@ -24,7 +24,7 @@ public class Employee implements IEmployee {
     @Column(name = "special")
 
     // TODO: 24/10/2016 conveter
-    @javax.persistence.Transient
+    @Transient
     @JsonIgnore
     private JSONObject jsonObject;
 
@@ -53,7 +53,7 @@ public class Employee implements IEmployee {
         this.id = id;
         this.position = position;
         this.salary = salary;
-        this.jsonObject = new JSONObject();
+//        this.jsonObject = new JSONObject();
     }
 
     @Override
